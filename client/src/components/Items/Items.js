@@ -1,11 +1,17 @@
 import React from 'react';
-import Item from './Item/Item';
+import { useSelector } from 'react-redux';
 
+import Item from './Item/Item';
 import useStyles from './styles';
 
 const Items = () => {
+    const items = useSelector((state) => state.items);
+
+    // eslint-disable-next-line
     const classes = useStyles();
     
+    console.log(items);
+
     return(
         <>
             <h1>ITEMS</h1>
