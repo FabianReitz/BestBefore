@@ -14,8 +14,8 @@ const Items = () => {
 
     return(
         <>
-            <h1>ITEMS</h1>
             <Item />
+            <br></br>
             <Item />
         </>
     );
