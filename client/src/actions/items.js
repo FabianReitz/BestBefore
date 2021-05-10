@@ -9,3 +9,13 @@ try {
         console.log(error.message);
     }
 };
+
+export const createItem = (item) => async (dispatch) => {
+    try {
+        const { data } = await api.createItem(item);
+
+        dispatch({ type: 'CREATE', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+};
