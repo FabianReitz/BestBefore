@@ -7,7 +7,8 @@ import useStyles from './styles';
 const Items = () => {
     const items = useSelector((state) => state.items);
 
-    // eslint-disable-next-line
+    
+    // eslint-disable-next-line no-unused-vars
     const classes = useStyles();
     
     console.log(items);
