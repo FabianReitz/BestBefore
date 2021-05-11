@@ -11,11 +11,19 @@ import { createItem } from '../../actions/items';
 
 
 const Form = () => {
+
+    const today = new Date();
+    const todayPretty = today.toISOString().split('T')[0];
+
+    const nextWeekUgly = today.setDate(today.getDate() + 7);
+    const nextWeek = new Date(nextWeekUgly);
+    const nextWeekPretty = nextWeek.toISOString().split('T')[0];
+
     const [itemData, setItemData] = useState({
         title: '',
         manufacturer: '',
-        purchaseDate: new Date(),
-        bestBeforeDate: '',
+        purchaseDate: todayPretty,
+        bestBeforeDate: nextWeekPretty,
         ammount: '',
         isPackaged: false,
         tags: ''
@@ -34,58 +42,95 @@ const Form = () => {
 
     }
 
-    const correctDateFormat = (input) => {
-        return moment(input, "DD.MM.YYYY", true).isValid();
-    }
-
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant="h6" >Ein Produkt hinzufügen</Typography>
 
-                <TextField name="title" variant="outlined" label="Titel" fullWidth value={itemData.title} onChange={(e) => setItemData({ ...itemData, title: e.target.value })} />
+                <TextField
+                    label="Titel"
+                    name="title"
+                    variant="outlined"
+                    fullWidth
+                    value={itemData.title}
+                    onChange={(e) => setItemData({ ...itemData, title: e.target.value })}
+                />
 
-                <TextField name="manufacturer" variant="outlined" label="Hersteller" fullWidth value={itemData.manufacturer} onChange={(e) => setItemData({ ...itemData, manufacturer: e.target.value })} />
+                <TextField
+                    label="Hersteller"
+                    name="manufacturer"
+                    variant="outlined"
+                    fullWidth
+                    value={itemData.manufacturer}
+                    onChange={(e) => setItemData({ ...itemData, manufacturer: e.target.value })}
+                />
 
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <TextField
+                    label="Kaufdatum"
+                    name="purchaseDate"
+                    variant="outlined"
+                    fullWidth
+                    type="date"
+                    defaultValue={itemData.purchaseDate}
+                    onChange={(e) => setItemData({ ...itemData, purchaseDate: e.target.value })}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
 
-                    <DatePicker
-                        variant="inline"
-                        inputVariant="outlined"
-                        format="MM/dd/yyyy"
-                        margin="normal"
-                        autoOk
-                        id="date-picker-inline"
-                        label="Date picker inline"
-                        value={itemData.purchaseDate}
-                        onChange={(e) => setItemData({ ...itemData, purchaseDate: e.target.value })}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                    />
+                <TextField
+                    label="Mindesthaltbarkeitsdatum"
+                    name="bestBeforeDate"
+                    fullWidth
+                    variant="outlined"
+                    type="date"
+                    defaultValue={itemData.bestBeforeDate}
+                    onChange={(e) => setItemData({ ...itemData, bestBeforeDate: e.target.value })}
+                    className={classes.textField}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
 
-                </MuiPickersUtilsProvider>
+                <TextField
+                    label="Menge"
+                    name="ammount"
+                    variant="outlined"
+                    fullWidth
+                    type="number"
+                    value={itemData.ammount}
+                    onChange={(e) => setItemData({ ...itemData, ammount: e.target.value })}
+                />
 
-
-                <TextField errorText="wow" name="purchaseDate" variant="outlined" label="Kaufdatum" fullWidth value={itemData.purchaseDate} onChange={(e) => {
-                    setItemData({ ...itemData, purchaseDate: e.target.value });
-                }} />
-
-
-                <TextField type="Number" name="bestBeforeDate" variant="outlined" label="Mindesthaltbarkeitsdatum" fullWidth value={itemData.bestBeforeDate} onChange={(e) => {
-                    setItemData({ ...itemData, bestBeforeDate: e.target.value });
-                    correctDateFormat(e.target.value);
-                }} />
-
-                <TextField name="ammount" variant="outlined" label="Menge" fullWidth value={itemData.ammount} onChange={(e) => setItemData({ ...itemData, ammount: e.target.value })} />
-
-                <TextField name="tags" variant="outlined" label="Tags" fullWidth value={itemData.tags} onChange={(e) => setItemData({ ...itemData, tags: e.target.value })} />
+                <TextField
+                    label="Tags"
+                    name="tags"
+                    variant="outlined"
+                    fullWidth
+                    value={itemData.tags}
+                    onChange={(e) => setItemData({ ...itemData, tags: e.target.value })}
+                />
 
                 {/* <FormControlLabel control={<Checkbox onChange={(e) => setItemData({ ...itemData, isPackaged: e.target.value })} name="isPackaged" />} label="verpackt" /> */}
 
-                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>HINZUFÜGEN</Button>
+                <Button
+                    className={classes.buttonSubmit}
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    type="submit"
+                    fullWidth>
+                    HINZUFÜGEN
+                </Button>
 
-                <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>CLEAR</Button>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    size="small"
+                    onClick={clear}
+                    fullWidth>
+                    CLEAR
+                </Button>
             </form>
 
         </Paper>
