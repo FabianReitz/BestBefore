@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { Container, AppBar, Typography, Grow, Grid, Button, Toolbar, IconButton, CssBaseline } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { getItems } from './actions/items';
@@ -7,9 +7,6 @@ import Items from './components/Items/Items';
 import Form from './components/Form/Form';
 import useStyles from './styles';
 
-import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { useHistory } from 'react-router-dom'
@@ -17,7 +14,7 @@ import { useHistory } from 'react-router-dom'
 const App = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    
+
     const history = useHistory();
 
     useEffect(() => {
@@ -25,18 +22,17 @@ const App = () => {
     }, [dispatch]);
 
     return (
-        <Container maxWidth="lg">
+        <div className={classes.root}>
+            <CssBaseline />
             <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            BestBefore
-          </Typography>
-          <Button onClick={() => history.push('/LoginForm')} color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
+                <Toolbar className={classes.toolbar} position="static">
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" className={classes.title}>BestBefore</Typography>
+                    <Button onClick={() => history.push('/LoginForm')} color="inherit">Login</Button>
+                </Toolbar>
+            </AppBar>
             <Grow in>
                 <Container>
                     <br></br>
@@ -50,10 +46,10 @@ const App = () => {
                     </Grid>
                 </Container>
             </Grow>
-        </Container>
+        </div>
 
-        
-        
+
+
     );
 };
 
