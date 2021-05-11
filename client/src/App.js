@@ -1,60 +1,128 @@
-import React, { useEffect } from 'react';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from "react";
+import {
+  TextField,
+  Container,
+  AppBar,
+  Typography,
+  Grow,
+  Grid,
+  Button,
+  Toolbar,
+  IconButton,
+  Modal,
+} from "@material-ui/core";
 
-import { getItems } from './actions/items';
-import Items from './components/Items/Items';
-import Form from './components/Form/Form';
-import useStyles from './styles';
+import { useDispatch } from "react-redux";
+import MenuIcon from "@material-ui/icons/Menu";
+import { getItems } from "./actions/items";
+import Items from "./components/Items/Items";
+import Form from "./components/Form/Form";
 
-import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import useStyles from "./styles";
 
-import { useHistory } from 'react-router-dom'
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
 
 const App = () => {
-    const classes = useStyles();
-    const dispatch = useDispatch();
-    
-    const history = useHistory();
+  const classes = useStyles();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getItems());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getItems());
+  }, [dispatch]);
 
-    return (
-        <Container maxWidth="lg">
-            <AppBar position="static">
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const body = (
+    <div style={modalStyle} className={classes.paper}>
+      <form
+        autoComplete="off"
+        noValidate
+        className={`${classes.root} ${classes.form}`}
+      >
+        <div>
+          <Typography variant="h4">Login</Typography>
+
+          <TextField id="username" label="Benutzername" variant="outlined" />
+          <br></br>
+          <TextField id="password" label="Passwort" variant="outlined" />
+          <br></br>
+          <TextField
+            id="passwordRetype"
+            label="Passwort wiederholen"
+            variant="outlined"
+          />
+        </div>
+        <Button color="primary" variant="contained">
+          Anmelden
+        </Button>
+      </form>
+    </div>
+  );
+
+  return (
+    <Container maxWidth="lg">
+      <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             BestBefore
           </Typography>
-          <Button onClick={() => history.push('/LoginForm')} color="inherit">Login</Button>
+          <Button onClick={handleOpen}>Login</Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="Login"
+            aria-describedby="Hier kann ein Nutzer sich anmelden"
+          >
+            {body}
+          </Modal>
         </Toolbar>
       </AppBar>
-            <Grow in>
-                <Container>
-                    <br></br>
-                    <Grid container justify="space-between" alignItems="stretch" spacing={1}>
-                        <Grid item xs={12} sm={7}>
-                            <Items />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Form />
-                        </Grid>
-                    </Grid>
-                </Container>
-            </Grow>
+      <Grow in>
+        <Container>
+          <br></br>
+          <Grid
+            container
+            justify="space-between"
+            alignItems="stretch"
+            spacing={1}
+          >
+            <Grid item xs={12}>
+              <Form />
+            </Grid>
+            <Grid item xs={12}>
+              <Items />
+            </Grid>
+          </Grid>
         </Container>
-
-        
-        
-    );
+      </Grow>
+    </Container>
+  );
 };
 
 export default App;
