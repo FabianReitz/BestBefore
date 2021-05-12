@@ -7,6 +7,6 @@ const reducer = (items = [], action) => {
         default:
             return items;
     }
-}
+};
 
 export default reducer;

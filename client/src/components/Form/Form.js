@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
     TextField,
     Button,
@@ -6,29 +6,29 @@ import {
     Accordion,
     AccordionSummary,
     AccordionDetails,
-} from "@material-ui/core";
-import { useDispatch } from "react-redux";
+} from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 
-import useStyles from "./styles";
-import { createItem } from "../../actions/items";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import useStyles from './styles';
+import { createItem } from '../../actions/items';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const Form = () => {
     const today = new Date();
-    const todayPretty = today.toISOString().split("T")[0];
+    const todayPretty = today.toISOString().split('T')[0];
 
     const nextWeekUgly = today.setDate(today.getDate() + 7);
     const nextWeek = new Date(nextWeekUgly);
-    const nextWeekPretty = nextWeek.toISOString().split("T")[0];
+    const nextWeekPretty = nextWeek.toISOString().split('T')[0];
 
     const [itemData, setItemData] = useState({
-        title: "",
-        manufacturer: "",
+        title: '',
+        manufacturer: '',
         purchaseDate: todayPretty,
         bestBeforeDate: nextWeekPretty,
-        ammount: "",
+        ammount: '',
         isPackaged: false,
-        tags: "",
+        tags: '',
     });
 
     const classes = useStyles();
@@ -40,30 +40,30 @@ const Form = () => {
         dispatch(createItem(itemData));
     };
 
-    const clear = () => { };
+    const clear = () => {};
 
     return (
         <Accordion className={classes.paper}>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
+                aria-controls='panel1a-content'
+                id='panel1a-header'
             >
                 <Typography className={classes.heading}>
                     Ein Produkt hinzufügen
-        </Typography>
+                </Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <form
-                    autoComplete="off"
+                    autoComplete='off'
                     noValidate
                     className={`${classes.root} ${classes.form}`}
                     onSubmit={handleSubmit}
                 >
                     <TextField
-                        name="title"
-                        variant="outlined"
-                        label="Titel"
+                        name='title'
+                        variant='outlined'
+                        label='Titel'
                         fullWidth
                         value={itemData.title}
                         onChange={(e) =>
@@ -72,22 +72,25 @@ const Form = () => {
                     />
 
                     <TextField
-                        name="manufacturer"
-                        variant="outlined"
-                        label="Hersteller"
+                        name='manufacturer'
+                        variant='outlined'
+                        label='Hersteller'
                         fullWidth
                         value={itemData.manufacturer}
                         onChange={(e) =>
-                            setItemData({ ...itemData, manufacturer: e.target.value })
+                            setItemData({
+                                ...itemData,
+                                manufacturer: e.target.value,
+                            })
                         }
                     />
                     <form noValidate>
                         <TextField
-                            variant="outlined"
+                            variant='outlined'
                             fullWidth
-                            id="buydate"
-                            label="Kaufdatum"
-                            type="date"
+                            id='buydate'
+                            label='Kaufdatum'
+                            type='date'
                             defaultValue={itemData.purchaseDate}
                             className={classes.textField}
                             InputLabelProps={{
@@ -97,11 +100,11 @@ const Form = () => {
                     </form>
                     <form noValidate>
                         <TextField
-                            variant="outlined"
+                            variant='outlined'
                             fullWidth
-                            id="bestBeforeDate"
-                            label="Mindesthaltbarkeitsdatum"
-                            type="date"
+                            id='bestBeforeDate'
+                            label='Mindesthaltbarkeitsdatum'
+                            type='date'
                             defaultValue={itemData.bestBeforeDate}
                             className={classes.textField}
                             InputLabelProps={{
@@ -111,48 +114,53 @@ const Form = () => {
                     </form>
 
                     <TextField
-                        name="ammount"
-                        type="number"
-                        variant="outlined"
-                        label="Menge"
+                        name='ammount'
+                        type='number'
+                        variant='outlined'
+                        label='Menge'
                         fullWidth
                         value={itemData.ammount}
                         onChange={(e) =>
-                            setItemData({ ...itemData, ammount: e.target.value })
+                            setItemData({
+                                ...itemData,
+                                ammount: e.target.value,
+                            })
                         }
                     />
 
                     <TextField
-                        name="tags"
-                        variant="outlined"
-                        label="Tags"
+                        name='tags'
+                        variant='outlined'
+                        label='Tags'
                         fullWidth
                         value={itemData.tags}
-                        onChange={(e) => setItemData({ ...itemData, tags: e.target.value })}
+                        onChange={(e) =>
+                            setItemData({ ...itemData, tags: e.target.value })
+                        }
                     />
 
                     {/* <FormControlLabel control={<Checkbox onChange={(e) => setItemData({ ...itemData, isPackaged: e.target.value })} name="isPackaged" />} label="verpackt" /> */}
 
                     <Button
                         className={classes.buttonSubmit}
-                        variant="contained"
-                        color="primary"
-                        size="large"
-                        type="submit"
+                        variant='contained'
+                        color='primary'
+                        size='large'
+                        type='submit'
                         fullWidth
                     >
                         HINZUFÜGEN
-          </Button>
+                    </Button>
 
                     <Button
-                        variant="contained"
-                        color="secondary"
-                        size="small"
+                        variant='contained'
+                        color='secondary'
+                        size='small'
                         onClick={clear}
                         fullWidth
                     >
                         CLEAR
-          </Button>
+                    </Button>
                 </form>
             </AccordionDetails>
         </Accordion>
