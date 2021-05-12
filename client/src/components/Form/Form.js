@@ -14,6 +14,13 @@ import { createItem } from "../../actions/items";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const Form = () => {
+  const today = new Date();
+  const todayPretty = today.toISOString().split("T")[0];
+
+  const nextWeekUgly = today.setDate(today.getDate() + 7);
+  const nextWeek = new Date(nextWeekUgly);
+  const nextWeekPretty = nextWeek.toISOString().split("T")[0];
+
   const [itemData, setItemData] = useState({
     title: "",
     manufacturer: "",

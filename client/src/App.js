@@ -10,6 +10,7 @@ import {
   Toolbar,
   IconButton,
   Modal,
+  CssBaseline,
 } from "@material-ui/core";
 
 import { useDispatch } from "react-redux";
@@ -55,7 +56,7 @@ const App = () => {
       <form
         autoComplete="off"
         noValidate
-        className={`${classes.root} ${classes.form}`}
+        className={`${classes.root} ${classes.form} ${classes.inputField}`}
       >
         <div>
           <Typography variant="h4">Login</Typography>
@@ -78,7 +79,8 @@ const App = () => {
   );
 
   return (
-    <Container maxWidth="lg">
+    <div className={classes.root}>
+      <CssBaseline />
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -121,7 +123,7 @@ const App = () => {
           </Grid>
         </Container>
       </Grow>
-    </Container>
+    </div>
   );
 };
 
