@@ -10,6 +10,8 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import SignInForm from '../../components/SignInForm/SignInForm';
+
 import useStyles from './styles';
 
 const Login = () => {
@@ -34,6 +36,7 @@ const Login = () => {
                     <Button>Login</Button>
                 </Toolbar>
             </AppBar>
+            <SignInForm />
         </div>
     );
 };
