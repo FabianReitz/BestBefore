@@ -33,6 +33,7 @@ function getModalStyle() {
 }
 
 const App = () => {
+
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -125,6 +126,7 @@ const App = () => {
       </Grow>
     </div>
   );
+
 };
 
 export default App;
