@@ -1,11 +1,26 @@
 import mongoose from 'mongoose';
 
 const itemSchema = mongoose.Schema({
-    title: String,
-    manufacturer: String,
-    purchaseDate: String,
-    bestBeforeDate: String,
-    ammount: Number,
+    title: {
+        type: String,
+        required: true,
+    },
+    manufacturer: {
+        type: String,
+        required: true,
+    },
+    purchaseDate: {
+        type: String,
+        required: true,
+    },
+    bestBeforeDate: {
+        type: String,
+        required: true,
+    },
+    ammount: {
+        type: Number,
+        default: 1,
+    },
     isPackaged: Boolean,
     tags: [String],
 });
