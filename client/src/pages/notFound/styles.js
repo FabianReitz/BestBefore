@@ -12,4 +12,9 @@ export default makeStyles((theme) => ({
     title: {
         flexGrow: 1,
     },
+    image: {
+        maxHeight: '218px',
+        maxWidth: '500px',
+        textAlign: 'center',
+    },
 }));

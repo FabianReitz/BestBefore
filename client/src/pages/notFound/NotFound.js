@@ -9,6 +9,8 @@ import {
     Button,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import Image from 'material-ui-image';
+import error404 from './template/error404.jpg';
 
 import useStyles from './styles';
 
@@ -34,6 +36,7 @@ const NotFound = () => {
                     <Button>Login</Button>
                 </Toolbar>
             </AppBar>
+            <Image className={classes.image} src={error404}></Image>
             <h1>Error 404</h1>
             <small>This is not the page you are looking for</small>
         </div>
