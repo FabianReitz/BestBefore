@@ -3,11 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import {
     TextField,
-    Container,
     AppBar,
     Typography,
-    Grow,
-    Grid,
     Button,
     Toolbar,
     IconButton,
@@ -17,10 +14,6 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { getItems } from '../../actions/items';
-import Items from '../../components/Items/Items';
-import Form from '../../components/Form/Form';
-import Appbar from '../../components/Appbar/appbar';
-
 import useStyles from './styles';
 
 function getModalStyle() {
@@ -34,7 +27,7 @@ function getModalStyle() {
     };
 }
 
-const Index = () => {
+const Appbar = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -91,27 +84,32 @@ const Index = () => {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <Appbar></Appbar>
-            <Grow in>
-                <Container>
-                    <br></br>
-                    <Grid
-                        container
-                        justify='space-between'
-                        alignItems='stretch'
-                        spacing={1}
+            <AppBar position='static'>
+                <Toolbar>
+                    <IconButton
+                        edge='start'
+                        className={classes.menuButton}
+                        color='inherit'
+                        aria-label='menu'
                     >
-                        <Grid item xs={12}>
-                            <Form />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Items />
-                        </Grid>
-                    </Grid>
-                </Container>
-            </Grow>
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant='h6' className={classes.title}>
+                        BestBefore
+                    </Typography>
+                    <Button onClick={handleOpen}>Login</Button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby='Login'
+                        aria-describedby='Hier kann ein Nutzer sich anmelden'
+                    >
+                        {body}
+                    </Modal>
+                </Toolbar>
+            </AppBar>
         </div>
     );
 };
 
-export default Index;
+export default Appbar;
