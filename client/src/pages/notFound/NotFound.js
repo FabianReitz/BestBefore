@@ -7,11 +7,14 @@ import {
     IconButton,
     Typography,
     Button,
+    Card,
+    CardContent,
+    CardMedia,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Image from 'material-ui-image';
-import error404 from './template/error404.jpg';
-
+import error404 from './assets/error404.jpg';
+import desert from './assets/desert.svg';
 import useStyles from './styles';
 
 const NotFound = () => {
@@ -36,9 +39,25 @@ const NotFound = () => {
                     <Button>Login</Button>
                 </Toolbar>
             </AppBar>
-            <Image className={classes.image} src={error404}></Image>
-            <h1>Error 404</h1>
-            <small>This is not the page you are looking for</small>
+            <Card className={classes.card}>
+                <CardMedia
+                    className={classes.media}
+                    image={error404}
+                    title='Contemplative Reptile'
+                />
+                <CardContent>
+                    <Typography gutterBottom variant='h5' component='h2'>
+                        Error 404
+                    </Typography>
+                    <Typography
+                        variant='body2'
+                        color='textSecondary'
+                        component='p'
+                    >
+                        This is not the page you are looking for
+                    </Typography>
+                </CardContent>
+            </Card>
         </div>
     );
 };
