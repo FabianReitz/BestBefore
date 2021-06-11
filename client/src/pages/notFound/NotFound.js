@@ -1,18 +1,12 @@
 import React from 'react';
 
 import {
-    AppBar,
-    Toolbar,
     CssBaseline,
-    IconButton,
     Typography,
-    Button,
     Card,
     CardContent,
     CardMedia,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import Image from 'material-ui-image';
 import error404 from './assets/error404.jpg';
 import useStyles from './styles';
 import Appbar from '../../components/Appbar/appbar';

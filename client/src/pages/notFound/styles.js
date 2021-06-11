@@ -15,19 +15,6 @@ export default makeStyles((theme) => ({
         width: '100%',
         height: '100%',
     },
-
-    menuButton: {
-        marginRight: '20px',
-    },
-
-    title: {
-        flexGrow: 1,
-    },
-    image: {
-        maxHeight: 362,
-        maxWidth: 218,
-        textAlign: 'center',
-    },
     card: {
         marginTop: '1%',
         marginLeft: 'auto',

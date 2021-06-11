@@ -1,20 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import {
-    TextField,
-    Container,
-    AppBar,
-    Typography,
-    Grow,
-    Grid,
-    Button,
-    Toolbar,
-    IconButton,
-    Modal,
-    CssBaseline,
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { Container, Grow, Grid, CssBaseline } from '@material-ui/core';
 
 import { getItems } from '../../actions/items';
 import Items from '../../components/Items/Items';
@@ -23,17 +10,6 @@ import Appbar from '../../components/Appbar/appbar';
 
 import useStyles from './styles';
 
-function getModalStyle() {
-    const top = 50;
-    const left = 50;
-
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
-
 const Index = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -41,52 +17,6 @@ const Index = () => {
     useEffect(() => {
         dispatch(getItems());
     }, [dispatch]);
-
-    const [modalStyle] = React.useState(getModalStyle);
-    const [open, setOpen] = React.useState(false);
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const body = (
-        <div style={modalStyle} className={classes.paper}>
-            <form
-                autoComplete='off'
-                noValidate
-                className={`${classes.root} ${classes.form} ${classes.inputField}`}
-            >
-                <div>
-                    <Typography variant='h4'>Login</Typography>
-
-                    <TextField
-                        id='username'
-                        label='Benutzername'
-                        variant='outlined'
-                    />
-                    <br></br>
-                    <TextField
-                        id='password'
-                        label='Passwort'
-                        variant='outlined'
-                    />
-                    <br></br>
-                    <TextField
-                        id='passwordRetype'
-                        label='Passwort wiederholen'
-                        variant='outlined'
-                    />
-                </div>
-                <Button color='primary' variant='contained'>
-                    Anmelden
-                </Button>
-            </form>
-        </div>
-    );
 
     return (
         <div className={classes.root}>
