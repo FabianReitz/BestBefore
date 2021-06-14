@@ -1,27 +1,42 @@
-import LoginInfo from '../models/userProfile.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
-export const getLogin = async (req, res) => {
+import ProfileInfo from '../models/userProfile.js';
+import accessTokenSecret from '../secrets/secrets.js';
+
+export const getProfile = async (req, res) => {
     try {
-        const loginInfo = await LoginInfo.find();
+        const profileInfo = await ProfileInfo.find();
 
-        res.status(200).json(loginInfo);
+        res.status(200).json(profileInfo);
     } catch (error) {
         res.status(400).json({ message: ErrorEvent.message });
     }
 };
 
-// export const setLogin = async (req, res) => {
-//     const user = req.body;
+export const logUserIn = async (req, res) => {
+    const userFromDB = await ProfileInfo.findOne({
+        username: req.body.username,
+    });
 
-//     const newUser = new LoginInfo(user);
+    if (userFromDB == null) {
+        return res.status(400).json('Cannot find User');
+    }
 
-//     try {
-//         await newUser.save();
+    try {
+        if (await bcrypt.compare(req.body.password, userFromDB.password)) {
+            const username = req.body.username;
+            const user = { name: username };
 
-//         console.log('User: ' + user);
-
-//         res.status(201).json(newUser);
-//     } catch (error) {
-//         res.status(409).json({ message: error.message });
-//     }
-// };
+            const accessToken = jwt.sign(
+                user,
+                accessTokenSecret.jwt.accessTokenSecret
+            );
+            res.json({ accessToken: accessToken });
+        } else {
+            res.json('Not Allowed');
+        }
+    } catch (error) {
+        res.status(500);
+    }
+};
