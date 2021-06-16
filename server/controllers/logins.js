@@ -26,13 +26,22 @@ export const logUserIn = async (req, res) => {
     try {
         if (await bcrypt.compare(req.body.password, userFromDB.password)) {
             const username = req.body.username;
-            const user = { name: username };
+            const user = { username: username };
 
             const accessToken = jwt.sign(
                 user,
-                accessTokenSecret.jwt.accessTokenSecret
+                accessTokenSecret.jwt.accessTokenSecret,
+                { expiresIn: '15m' }
             );
-            res.json({ accessToken: accessToken });
+
+            const refreshToken = jwt.sign(
+                user,
+                accessTokenSecret.jwt.refreshTokenSecret
+            );
+
+            res.status(200).json({ token: accessToken, username: username });
+            // res.cookie('token', accessToken);
+            // res.cookie('username', username);
         } else {
             res.json('Not Allowed');
         }

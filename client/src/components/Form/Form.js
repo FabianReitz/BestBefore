@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Cookies from 'js-cookie';
 import {
     TextField,
     Button,
@@ -22,6 +23,7 @@ const Form = () => {
     const nextWeekPretty = nextWeek.toISOString().split('T')[0];
 
     const [itemData, setItemData] = useState({
+        author: Cookies.get('username'),
         title: '',
         manufacturer: '',
         purchaseDate: todayPretty,
