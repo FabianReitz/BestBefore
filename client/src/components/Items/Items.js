@@ -14,30 +14,20 @@ const Items = () => {
 
     return (
         <>
-            <Container>
-                <br></br>
-                <Grid
-                    container
-                    justify='space-between'
-                    alignItems='stretch'
-                    spacing={1}
-                >
-                    <Grid item xs={3}>
-                        <Item />
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Item />
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Item />
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Item />
-                    </Grid>
-                </Grid>
+            <Container className={classes.wrapper}>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
+                <Item className={classes.card}></Item>
             </Container>
-
-            <br></br>
         </>
     );
 };

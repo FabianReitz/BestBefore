@@ -7,6 +7,10 @@ import {
     Accordion,
     AccordionSummary,
     AccordionDetails,
+    FormControl,
+    Select,
+    InputLabel,
+    MenuItem,
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
@@ -28,8 +32,9 @@ const Form = () => {
         manufacturer: '',
         purchaseDate: todayPretty,
         bestBeforeDate: nextWeekPretty,
-        ammount: '',
+        amount: '',
         isPackaged: false,
+        category: '',
         tags: '',
     });
 
@@ -40,6 +45,10 @@ const Form = () => {
         e.preventDefault();
 
         dispatch(createItem(itemData));
+    };
+
+    const handleChange = (event) => {
+        itemData.category(event.target.value);
     };
 
     const clear = () => {};
@@ -116,7 +125,7 @@ const Form = () => {
                     </form>
 
                     <TextField
-                        name='ammount'
+                        name='amount'
                         type='number'
                         variant='outlined'
                         label='Menge'
@@ -129,6 +138,21 @@ const Form = () => {
                             })
                         }
                     />
+                    <FormControl className={classes.category}>
+                        <InputLabel variant='outlined' fullWidth id='category'>
+                            Category
+                        </InputLabel>
+                        <Select
+                            labelId='category'
+                            id='category'
+                            value={itemData.category}
+                            onChange={handleChange}
+                        >
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                        </Select>
+                    </FormControl>
 
                     <TextField
                         name='tags'

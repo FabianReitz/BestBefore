@@ -1,16 +1,15 @@
 import React from 'react';
 
 import {
-    AppBar,
-    Toolbar,
     CssBaseline,
-    IconButton,
     Typography,
-    Button,
+    Card,
+    CardContent,
+    CardMedia,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-
+import kenobi from './assets/kenobi.svg';
 import useStyles from './styles';
+import Appbar from '../../components/Appbar/appbar';
 
 const NotFound = () => {
     const classes = useStyles();
@@ -18,24 +17,26 @@ const NotFound = () => {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position='static'>
-                <Toolbar>
-                    <IconButton
-                        edge='start'
-                        className={classes.menuButton}
-                        color='inherit'
-                        aria-label='menu'
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant='h6' className={classes.title}>
-                        BestBefore
+            <Appbar position='static'></Appbar>
+            <Card className={classes.card}>
+                <CardMedia
+                    className={classes.media}
+                    image={kenobi}
+                    title='Contemplative Reptile'
+                />
+                <CardContent>
+                    <Typography gutterBottom variant='h5' component='h2'>
+                        Error 404
                     </Typography>
-                    <Button>Login</Button>
-                </Toolbar>
-            </AppBar>
-            <h1>Error 404</h1>
-            <small>This is not the page you are looking for</small>
+                    <Typography
+                        variant='body2'
+                        color='textSecondary'
+                        component='p'
+                    >
+                        This is not the page you are looking for
+                    </Typography>
+                </CardContent>
+            </Card>
         </div>
     );
 };
