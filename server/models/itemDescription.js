@@ -23,6 +23,10 @@ const itemSchema = mongoose.Schema({
     },
     isPackaged: Boolean,
     tags: [String],
+    author: {
+        type: String,
+        required: true,
+    },
 });
 
 const ItemDescription = mongoose.model('ItemDescription', itemSchema);

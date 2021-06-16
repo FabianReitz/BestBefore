@@ -15,12 +15,9 @@ export const createItem = async (req, res) => {
 
     const newItem = new ItemDescription(item);
 
-    
     try {
         await newItem.save();
-        
-        console.log("Item: " + item);
-        
+
         res.status(201).json(newItem);
     } catch (error) {
         res.status(409).json({ message: error.message });

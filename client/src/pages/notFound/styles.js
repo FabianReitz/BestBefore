@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
+
 import desert from './assets/desert.svg';
+
 
 export default makeStyles((theme) => ({
     root: {
