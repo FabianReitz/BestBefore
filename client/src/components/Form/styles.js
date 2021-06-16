@@ -8,11 +8,14 @@ export default makeStyles((theme) => ({
     },
     paper: {
         padding: theme.spacing(2),
+        maxWidth: '30%',
+        minWidth: '280px',
     },
     form: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        width: '100%',
     },
     fileInput: {
         width: '97%',
@@ -20,5 +23,12 @@ export default makeStyles((theme) => ({
     },
     buttonSubmit: {
         marginBottom: 10,
+    },
+    category: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
     },
 }));

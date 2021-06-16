@@ -7,7 +7,7 @@ import {
     CardContent,
     CardMedia,
 } from '@material-ui/core';
-import error404 from './assets/error404.jpg';
+import kenobi from './assets/kenobi.svg';
 import useStyles from './styles';
 import Appbar from '../../components/Appbar/appbar';
 
@@ -21,7 +21,7 @@ const NotFound = () => {
             <Card className={classes.card}>
                 <CardMedia
                     className={classes.media}
-                    image={error404}
+                    image={kenobi}
                     title='Contemplative Reptile'
                 />
                 <CardContent>

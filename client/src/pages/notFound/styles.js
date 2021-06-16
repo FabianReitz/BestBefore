@@ -16,13 +16,17 @@ export default makeStyles((theme) => ({
         height: '100%',
     },
     card: {
+        position: 'relative',
         marginTop: '1%',
         marginLeft: 'auto',
         marginRight: 'auto',
-        maxWidth: 362,
+        width: '30%',
+        height: '50%',
+        minWidth: '200px',
+        backgroundColor: 'rgba(201, 201, 196, 0.5)',
     },
     media: {
-        height: 218,
-        maxWidth: 362,
+        height: '82%',
+        width: '100%',
     },
 }));
