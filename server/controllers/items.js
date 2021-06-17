@@ -5,7 +5,7 @@ export const getItems = async (req, res) => {
     try {
         const username = jwt.decode(req.body.token).username;
         const itemDescriptions = await ItemDescription.find({
-            author: 'TestUser123',
+            author: username,
         });
 
         res.status(200).json(itemDescriptions);
