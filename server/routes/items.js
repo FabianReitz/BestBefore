@@ -5,7 +5,7 @@ import { authenticateToken } from '../controllers/helpers/authenticateToken.js';
 
 const router = express.Router();
 
-router.get('/', authenticateToken, getItems);
+router.post('/', authenticateToken, getItems);
 router.post('/', createItem);
 
 export default router;

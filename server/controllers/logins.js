@@ -40,8 +40,6 @@ export const logUserIn = async (req, res) => {
             );
 
             res.status(200).json({ token: accessToken, username: username });
-            // res.cookie('token', accessToken);
-            // res.cookie('username', username);
         } else {
             res.json('Not Allowed');
         }

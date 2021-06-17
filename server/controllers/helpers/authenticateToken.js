@@ -3,7 +3,8 @@ import jwt from 'jsonwebtoken';
 import accessTokenSecret from '../../secrets/secrets.js';
 
 export const authenticateToken = (req, res, next) => {
-    const accessToken = req.cookies['token'];
+    const accessToken = req.body.token;
+    console.log(accessToken);
     if (!accessToken) return res.sendStatus(401);
 
     jwt.verify(
@@ -11,7 +12,6 @@ export const authenticateToken = (req, res, next) => {
         accessTokenSecret.jwt.accessTokenSecret,
         (err, username) => {
             if (err) return res.sendStatus(403);
-            req.username = username;
             next();
         }
     );
