@@ -19,6 +19,47 @@ import { createItem } from '../../actions/items';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const Form = () => {
+    const categories = [
+        {
+            value: 'eggs',
+            label: 'Eier',
+        },
+        {
+            value: 'packaged',
+            label: 'Verpackt',
+        },
+        {
+            value: 'fruit',
+            label: 'Obst',
+        },
+        {
+            value: 'liquor',
+            label: 'Spirituose',
+        },
+        {
+            value: 'meat',
+            label: 'Fleisch',
+        },
+        {
+            value: 'milkproduct',
+            label: 'Milchprodukt',
+        },
+        {
+            value: 'vegetable',
+            label: 'Gemüse',
+        },
+        {
+            value: 'softdrink',
+            label: 'Softdrink',
+        },
+    ];
+
+    const [category, setCategory] = React.useState('Verpackt');
+
+    const handleCategoryChange = (event) => {
+        setCategory(event.target.value);
+    };
+
     const today = new Date();
     const todayPretty = today.toISOString().split('T')[0];
 
@@ -128,21 +169,25 @@ const Form = () => {
                             })
                         }
                     />
-                    <FormControl className={classes.category}>
-                        <InputLabel variant='outlined' id='category'>
-                            Category
-                        </InputLabel>
-                        <Select
-                            labelId='category'
-                            id='category'
-                            value={itemData.category}
-                            onChange={handleChange}
-                        >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <TextField
+                        className={classes.textField}
+                        id='filled-select-category'
+                        select
+                        label='Kategorie'
+                        value={category}
+                        onChange={handleCategoryChange}
+                        helperText='Bitte wähle eine Kategorie aus'
+                        variant='filled'
+                    >
+                        {categories.map((category) => (
+                            <MenuItem
+                                key={category.value}
+                                value={category.value}
+                            >
+                                {category.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
 
                     <TextField
                         name='tags'
