@@ -34,14 +34,9 @@ export const logUserIn = async (req, res) => {
                 { expiresIn: '15m' }
             );
 
-            const refreshToken = jwt.sign(
-                user,
-                accessTokenSecret.jwt.refreshTokenSecret
-            );
-
             res.status(200).json({ token: accessToken, username: username });
         } else {
-            res.json('Not Allowed');
+            res.sendStatus(405);
         }
     } catch (error) {
         res.status(500);

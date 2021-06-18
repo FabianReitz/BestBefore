@@ -1,3 +1,5 @@
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -7,8 +9,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { useDispatch } from 'react-redux';
-import { logUserIn } from '../../actions/users';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,22 +34,30 @@ const useStyles = makeStyles((theme) => ({
 const SignInForm = () => {
     const classes = useStyles();
     const history = useHistory();
-    const dispatch = useDispatch();
 
     const [loginData, setLoginData] = useState({
         username: '',
         password: '',
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        dispatch(logUserIn(loginData));
-    };
+        const response = await axios.post(
+            'http://localhost:5000/login',
+            loginData
+        );
 
-    function handleClick() {
-        // history.push('/');
-    }
+        const responseStatus = response.status;
+
+        if (responseStatus === 200) {
+            Cookies.set('username', response.data.username);
+            Cookies.set('token', response.data.token);
+            history.push('/');
+        } else {
+            // Do things
+        }
+    };
 
     function handleRegisterClick() {
         history.push('/register');
@@ -110,7 +118,6 @@ const SignInForm = () => {
                         variant='contained'
                         color='primary'
                         className={classes.submit}
-                        onClick={handleClick}
                     >
                         ANMELDEN
                     </Button>
