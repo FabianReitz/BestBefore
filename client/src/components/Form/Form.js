@@ -56,10 +56,6 @@ const Form = () => {
 
     const [category, setCategory] = React.useState('Verpackt');
 
-    const handleCategoryChange = (event) => {
-        setCategory(event.target.value);
-    };
-
     const today = new Date();
     const todayPretty = today.toISOString().split('T')[0];
 
@@ -86,10 +82,6 @@ const Form = () => {
         e.preventDefault();
 
         dispatch(createItem(itemData));
-    };
-
-    const handleChange = (event) => {
-        itemData.category(event.target.value);
     };
 
     const clear = () => {};
@@ -175,7 +167,13 @@ const Form = () => {
                         select
                         label='Kategorie'
                         value={category}
-                        onChange={handleCategoryChange}
+                        onChange={(e) => {
+                            setItemData({
+                                ...itemData,
+                                category: e.target.value,
+                            });
+                            setCategory(e.target.value);
+                        }}
                         helperText='Bitte wähle eine Kategorie aus'
                         variant='filled'
                     >
