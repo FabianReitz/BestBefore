@@ -27,6 +27,10 @@ const itemSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    category: {
+        type: String,
+        required: true,
+    },
 });
 
 const ItemDescription = mongoose.model('ItemDescription', itemSchema);

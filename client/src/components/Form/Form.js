@@ -174,8 +174,7 @@ const Form = () => {
                             });
                             setCategory(e.target.value);
                         }}
-                        helperText='Bitte wähle eine Kategorie aus'
-                        variant='filled'
+                        variant='outlined'
                     >
                         {categories.map((category) => (
                             <MenuItem
