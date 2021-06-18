@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
     BrowserRouter as Router,
@@ -6,13 +6,21 @@ import {
     Switch,
     Redirect,
 } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Index from './pages/index/Index';
 import NotFound from './pages/notFound/NotFound';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import { getItems } from './actions/items';
 
 const App = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getItems());
+    }, [dispatch]);
+
     return (
         <Router>
             <Switch>

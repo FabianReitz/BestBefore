@@ -22,7 +22,7 @@ import eggs from '../ItemIcons/eggs.png';
 import fruit from '../ItemIcons/fruit.png';
 import vegetable from '../ItemIcons/vegetable.png';
 import milk from '../ItemIcons/milk.png';
-import softdrink from '../ItemIcons/softdrink.png';
+import softdrink from '../ItemIcons/soft_drink.png';
 import liquor from '../ItemIcons/liquor.png';
 
 const Item = ({ item }) => {
