@@ -11,6 +11,7 @@ import {
     MenuItem,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { useHistory } from 'react-router-dom';
 
 import { getItems } from '../../actions/items';
 import useStyles from './styles';
@@ -32,6 +33,11 @@ const Appbar = () => {
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
+
+    let history = useHistory();
+    function handleClick() {
+        history.push('/login');
+    }
 
     return (
         <div className={classes.root}>
@@ -57,7 +63,9 @@ const Appbar = () => {
                         onClose={handleMenuClose}
                     >
                         <MenuItem onClick={handleMenuClose}>Darkmode</MenuItem>
-                        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+                        <MenuItem onClick={(handleMenuClose, handleClick)}>
+                            Logout
+                        </MenuItem>
                     </Menu>
                     <Typography variant='h6' className={classes.title}>
                         BestBefore
