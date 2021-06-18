@@ -19,7 +19,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const Item = () => {
+const Item = ({ item }) => {
     const classes = useStyles();
 
     // TODO: functions for tags
