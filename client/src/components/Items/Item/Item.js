@@ -102,32 +102,12 @@ const Item = ({ item }) => {
                 <Typography variant='body2' color='textSecondary' component='p'>
                     Tags:
                 </Typography>
-
+                {item.tags.map((tag) => (
+                    <Chip label={tag.value} key={item._id} item={item}></Chip>
+                ))}
                 <Chip label='Basic' />
-                <Chip label='Disabled' disabled />
-                <Chip
-                    avatar={<Avatar>M</Avatar>}
-                    label='Clickable'
-                    onClick={handleClick}
-                />
-                <Chip
-                    avatar={
-                        <Avatar
-                            alt='Natacha'
-                            src='/static/images/avatar/1.jpg'
-                        />
-                    }
-                    label='Deletable'
-                    onDelete={handleDelete}
-                />
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label='add to favorites'>
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label='share'>
-                    <ShareIcon />
-                </IconButton>
                 <IconButton
                     onClick={() => {
                         alert('clicked');

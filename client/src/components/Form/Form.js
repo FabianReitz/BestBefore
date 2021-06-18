@@ -7,9 +7,6 @@ import {
     Accordion,
     AccordionSummary,
     AccordionDetails,
-    FormControl,
-    Select,
-    InputLabel,
     MenuItem,
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
