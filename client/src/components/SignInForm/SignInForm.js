@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useDispatch } from 'react-redux';
 import { logUserIn } from '../../actions/users';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1),
     },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 0, -2),
     },
 }));
 
@@ -45,6 +46,15 @@ const SignInForm = () => {
 
         dispatch(logUserIn(loginData));
     };
+
+    let history = useHistory();
+    function handleClick() {
+        history.push('/');
+    }
+
+    function handleRegisterClick() {
+        history.push('/register');
+    }
 
     return (
         <Container component='main' maxWidth='xs'>
@@ -67,7 +77,7 @@ const SignInForm = () => {
                         required
                         fullWidth
                         id='email'
-                        label='Username'
+                        label='Benutzername'
                         name='email'
                         autoComplete='email'
                         autoFocus
@@ -84,7 +94,7 @@ const SignInForm = () => {
                         required
                         fullWidth
                         name='password'
-                        label='Password'
+                        label='Passwort'
                         type='password'
                         id='password'
                         autoComplete='current-password'
@@ -101,8 +111,19 @@ const SignInForm = () => {
                         variant='contained'
                         color='primary'
                         className={classes.submit}
+                        onClick={handleClick}
                     >
                         ANMELDEN
+                    </Button>
+                    <Button
+                        type='register'
+                        fullWidth
+                        variant='contained'
+                        color='secondary'
+                        className={classes.submit}
+                        onClick={handleRegisterClick}
+                    >
+                        REGISTRIEREN
                     </Button>
                 </form>
             </div>
