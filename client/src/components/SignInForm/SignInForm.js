@@ -1,14 +1,18 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import React, { useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
+import {
+    Avatar,
+    Button,
+    CssBaseline,
+    TextField,
+    Typography,
+    makeStyles,
+    Container,
+    Modal,
+} from '@material-ui/core';
+
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -29,11 +33,21 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, -2),
     },
+    modal: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
 }));
 
 const SignInForm = () => {
     const classes = useStyles();
     const history = useHistory();
+    const [modalStyle] = React.useState(getModalStyle);
+    const [loginErrorOpen, setLoginErrorOpen] = React.useState(false);
 
     const [loginData, setLoginData] = useState({
         username: '',
@@ -57,15 +71,39 @@ const SignInForm = () => {
             })
             .catch(function (error) {
                 if (error.response) {
-                    // Do stuff
+                    setLoginErrorOpen(true);
                     console.log('Something went wrong');
                 }
             });
     };
 
+    function getModalStyle() {
+        const top = 50;
+        const left = 50;
+
+        return {
+            top: `${top}%`,
+            left: `${left}%`,
+            transform: `translate(-${top}%, -${left}%)`,
+        };
+    }
+
     function handleRegisterClick() {
         history.push('/register');
     }
+
+    const bodyLoginError = (
+        <div style={modalStyle} className={classes.modal}>
+            <h2 id='simple-modal-title'>Anmeldung fehlgeschlagen!</h2>
+            <p id='simple-modal-description'>
+                Benutzername oder Passwort ist falsch.
+            </p>
+        </div>
+    );
+
+    const handleLoginErrorClose = () => {
+        setLoginErrorOpen(false);
+    };
 
     return (
         <Container component='main' maxWidth='xs'>
@@ -125,6 +163,14 @@ const SignInForm = () => {
                     >
                         ANMELDEN
                     </Button>
+                    <Modal
+                        open={loginErrorOpen}
+                        onClose={handleLoginErrorClose}
+                        aria-labelledby='simple-modal-title'
+                        aria-describedby='simple-modal-description'
+                    >
+                        {bodyLoginError}
+                    </Modal>
                     <Button
                         type='register'
                         fullWidth
