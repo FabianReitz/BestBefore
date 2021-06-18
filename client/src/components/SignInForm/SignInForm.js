@@ -56,20 +56,25 @@ const SignInForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await axios.post(
-            'http://localhost:5000/login',
-            loginData
-        );
 
-        const responseStatus = response.status;
+        await axios
+            .post('http://localhost:5000/login', loginData)
+            .then((response) => {
+                // Login is correct.
+                const responseStatus = response.status;
 
-        if (responseStatus === 200) {
-            Cookies.set('username', response.data.username);
-            Cookies.set('token', response.data.token);
-            history.push('/');
-        } else {
-            setLoginErrorOpen(true);
-        }
+                if (responseStatus === 200) {
+                    Cookies.set('username', response.data.username);
+                    Cookies.set('token', response.data.token);
+                    history.push('/');
+                }
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    setLoginErrorOpen(true);
+                    console.log('Something went wrong');
+                }
+            });
     };
 
     function getModalStyle() {

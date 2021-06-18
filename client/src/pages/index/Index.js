@@ -12,11 +12,6 @@ import useStyles from './styles';
 
 const Index = () => {
     const classes = useStyles();
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getItems());
-    }, [dispatch]);
 
     return (
         <div className={classes.root}>

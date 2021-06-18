@@ -20,7 +20,7 @@ const App = () => {
     useEffect(() => {
         dispatch(getItems());
     }, [dispatch]);
-
+  
     return (
         <Router>
             <Switch>
