@@ -72,8 +72,8 @@ const Item = ({ item }) => {
           </IconButton>
         }
         */
-                title='Item'
-                subheader='Menge'
+                title={item.title}
+                subheader={item.ammount}
             />
             <CardMedia
                 className={classes.media}
