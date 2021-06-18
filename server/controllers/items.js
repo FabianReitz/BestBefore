@@ -1,8 +1,12 @@
 import ItemDescription from '../models/itemDescription.js';
+import jwt from 'jsonwebtoken';
 
 export const getItems = async (req, res) => {
     try {
-        const itemDescriptions = await ItemDescription.find();
+        const username = jwt.decode(req.body.token).username;
+        const itemDescriptions = await ItemDescription.find({
+            author: username,
+        });
 
         res.status(200).json(itemDescriptions);
     } catch (error) {

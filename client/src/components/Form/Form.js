@@ -154,8 +154,6 @@ const Form = () => {
                         }
                     />
 
-                    {/* <FormControlLabel control={<Checkbox onChange={(e) => setItemData({ ...itemData, isPackaged: e.target.value })} name="isPackaged" />} label="verpackt" /> */}
-
                     <Button
                         className={classes.buttonSubmit}
                         variant='contained'
