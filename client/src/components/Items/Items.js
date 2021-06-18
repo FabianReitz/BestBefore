@@ -10,8 +10,6 @@ const Items = () => {
     // eslint-disable-next-line no-unused-vars
     const classes = useStyles();
 
-    console.log(items);
-
     return (
         <>
             <Container className={classes.wrapper}>

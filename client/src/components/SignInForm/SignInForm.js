@@ -33,13 +33,13 @@ const useStyles = makeStyles((theme) => ({
 
 const SignInForm = () => {
     const classes = useStyles();
+    const history = useHistory();
+    const dispatch = useDispatch();
 
     const [loginData, setLoginData] = useState({
         username: '',
         password: '',
     });
-
-    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -47,9 +47,8 @@ const SignInForm = () => {
         dispatch(logUserIn(loginData));
     };
 
-    let history = useHistory();
     function handleClick() {
-        history.push('/');
+        // history.push('/');
     }
 
     function handleRegisterClick() {

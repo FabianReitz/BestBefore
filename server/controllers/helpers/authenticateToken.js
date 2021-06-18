@@ -4,7 +4,6 @@ import accessTokenSecret from '../../secrets/secrets.js';
 
 export const authenticateToken = (req, res, next) => {
     const accessToken = req.body.token;
-    console.log(accessToken);
     if (!accessToken) return res.sendStatus(401);
 
     jwt.verify(

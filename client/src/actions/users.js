@@ -27,7 +27,7 @@ export const logUserIn = (user) => async (dispatch) => {
 
         Cookies.set('username', data.username);
         Cookies.set('token', data.token);
-        console.log(data);
+        console.log('Test' + data);
     } catch (error) {
         console.log(error);
     }
