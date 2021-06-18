@@ -83,9 +83,10 @@ const SignInForm = () => {
 
     const bodyUsername = (
         <div style={modalStyle} className={classes.modal}>
-            <h2 id='simple-modal-title'>Benutzername fehlt</h2>
+            <h2 id='simple-modal-title'>Benutzername ungültig</h2>
             <p id='simple-modal-description'>
-                Bitte gib einen Benutzernamen einen.
+                Bitte gib einen Benutzernamen (min. 6 Zeichen) ein. <br></br>
+                Darf keine Symbole enthalten.
             </p>
         </div>
     );
@@ -121,7 +122,6 @@ const SignInForm = () => {
     //Username Schema
     var usernameSchema = new passwordValidator();
     usernameSchema.is().min(6);
-    usernameSchema.is().max(14);
     usernameSchema.has().not().symbols(); // Should not have Symbols
 
     const [registerData, setRegisterData] = useState({

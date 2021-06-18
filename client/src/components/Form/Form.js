@@ -75,7 +75,6 @@ const Form = () => {
                         name='title'
                         variant='outlined'
                         label='Titel'
-                        fullWidth
                         value={itemData.title}
                         onChange={(e) =>
                             setItemData({ ...itemData, title: e.target.value })
@@ -86,7 +85,6 @@ const Form = () => {
                         name='manufacturer'
                         variant='outlined'
                         label='Hersteller'
-                        fullWidth
                         value={itemData.manufacturer}
                         onChange={(e) =>
                             setItemData({
@@ -95,41 +93,33 @@ const Form = () => {
                             })
                         }
                     />
-                    <form noValidate>
-                        <TextField
-                            variant='outlined'
-                            fullWidth
-                            id='buydate'
-                            label='Kaufdatum'
-                            type='date'
-                            defaultValue={itemData.purchaseDate}
-                            className={classes.textField}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                    </form>
-                    <form noValidate>
-                        <TextField
-                            variant='outlined'
-                            fullWidth
-                            id='bestBeforeDate'
-                            label='Mindesthaltbarkeitsdatum'
-                            type='date'
-                            defaultValue={itemData.bestBeforeDate}
-                            className={classes.textField}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                    </form>
-
+                    <TextField
+                        variant='outlined'
+                        id='buydate'
+                        label='Kaufdatum'
+                        type='date'
+                        defaultValue={itemData.purchaseDate}
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                    <TextField
+                        variant='outlined'
+                        id='bestBeforeDate'
+                        label='Mindesthaltbarkeitsdatum'
+                        type='date'
+                        defaultValue={itemData.bestBeforeDate}
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
                     <TextField
                         name='amount'
                         type='number'
                         variant='outlined'
                         label='Menge'
-                        fullWidth
                         value={itemData.ammount}
                         onChange={(e) =>
                             setItemData({
@@ -139,7 +129,7 @@ const Form = () => {
                         }
                     />
                     <FormControl className={classes.category}>
-                        <InputLabel variant='outlined' fullWidth id='category'>
+                        <InputLabel variant='outlined' id='category'>
                             Category
                         </InputLabel>
                         <Select
@@ -158,7 +148,6 @@ const Form = () => {
                         name='tags'
                         variant='outlined'
                         label='Tags'
-                        fullWidth
                         value={itemData.tags}
                         onChange={(e) =>
                             setItemData({ ...itemData, tags: e.target.value })
@@ -173,7 +162,6 @@ const Form = () => {
                         color='primary'
                         size='large'
                         type='submit'
-                        fullWidth
                     >
                         HINZUFÜGEN
                     </Button>
@@ -183,7 +171,6 @@ const Form = () => {
                         color='secondary'
                         size='small'
                         onClick={clear}
-                        fullWidth
                     >
                         CLEAR
                     </Button>
