@@ -1,14 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Container, Grid } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import Item from './Item/Item';
 import useStyles from './styles';
+import { useSelector } from 'react-redux';
 
 const Items = () => {
-    const items = useSelector((state) => state.items);
-
     // eslint-disable-next-line no-unused-vars
     const classes = useStyles();
+    const items = useSelector((state) => state.items);
+    console.log(items); // Do what you want
 
     return (
         <>

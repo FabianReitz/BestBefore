@@ -20,7 +20,7 @@ export const logUserIn = async (req, res) => {
     });
 
     if (userFromDB == null) {
-        return res.status(400).json('Cannot find User');
+        return res.sendStatus(400);
     }
 
     try {
