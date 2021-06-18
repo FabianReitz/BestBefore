@@ -18,11 +18,6 @@ import useStyles from './styles';
 
 const Appbar = () => {
     const classes = useStyles();
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getItems());
-    }, [dispatch]);
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
