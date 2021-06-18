@@ -1,8 +1,6 @@
 import React from 'react';
 
 import useStyles from './styles';
-import Fleisch_Icon from '../ItemIcons/Fleisch_Icon.jpg';
-
 import {
     Card,
     CardHeader,
@@ -18,6 +16,14 @@ import {
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import DeleteIcon from '@material-ui/icons/Delete';
+import meat from '../ItemIcons/meat.png';
+import packaged from '../ItemIcons/food_packaged.png';
+import eggs from '../ItemIcons/eggs.png';
+import fruit from '../ItemIcons/fruit.png';
+import vegetable from '../ItemIcons/vegetable.png';
+import milk from '../ItemIcons/milk.png';
+import softdrink from '../ItemIcons/softdrink.png';
+import liquor from '../ItemIcons/liquor.png';
 
 const Item = ({ item }) => {
     const classes = useStyles();
@@ -29,6 +35,27 @@ const Item = ({ item }) => {
 
     const handleClick = () => {
         console.info('You clicked the Chip.');
+    };
+
+    const imageToCategory = () => {
+        switch (item.category) {
+            case 'eggs':
+                return eggs;
+            case 'meat':
+                return meat;
+            case 'softdrink':
+                return softdrink;
+            case 'milk':
+                return milk;
+            case 'vegetable':
+                return vegetable;
+            case 'fruit':
+                return fruit;
+            case 'liquor':
+                return liquor;
+            default:
+                return packaged;
+        }
     };
 
     return (
@@ -50,20 +77,20 @@ const Item = ({ item }) => {
             />
             <CardMedia
                 className={classes.media}
-                image={Fleisch_Icon}
-                title='Fleisch_Icon'
+                image={imageToCategory()}
+                title={item.category}
             />
             <CardContent>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                    Gekauft am:
+                    Gekauft am: {item.purchaseDate}
                 </Typography>
 
                 <Typography variant='body2' color='textSecondary' component='p'>
-                    MHD:
+                    MHD: {item.bestBeforeDate}
                 </Typography>
 
                 <Typography variant='body2' color='textSecondary' component='p'>
-                    Hersteller
+                    Hersteller: {item.manufacturer}
                 </Typography>
 
                 <br></br>
