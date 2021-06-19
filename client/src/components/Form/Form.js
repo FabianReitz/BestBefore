@@ -7,9 +7,6 @@ import {
     Accordion,
     AccordionSummary,
     AccordionDetails,
-    FormControl,
-    Select,
-    InputLabel,
     MenuItem,
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
@@ -72,7 +69,7 @@ const Form = () => {
         amount: '',
         isPackaged: false,
         category: '',
-        tags: '',
+        tags: [],
     });
 
     const classes = useStyles();
@@ -192,7 +189,10 @@ const Form = () => {
                         label='Tags'
                         value={itemData.tags}
                         onChange={(e) =>
-                            setItemData({ ...itemData, tags: e.target.value })
+                            setItemData({
+                                ...itemData,
+                                tags: e.target.value.split(','),
+                            })
                         }
                     />
 
