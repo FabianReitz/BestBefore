@@ -105,7 +105,6 @@ const Item = ({ item }) => {
                 {item.tags.map((tag) => (
                     <Chip label={tag.value} key={item._id} item={item}></Chip>
                 ))}
-                <Chip label='Basic' />
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton
