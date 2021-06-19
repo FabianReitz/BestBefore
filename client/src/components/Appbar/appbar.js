@@ -7,15 +7,18 @@ import {
     CssBaseline,
 } from '@material-ui/core';
 import ExitToApp from '@material-ui/icons/ExitToApp';
+import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
 
 const Appbar = () => {
     const classes = useStyles();
 
-    let history = useHistory();
+    const history = useHistory();
 
     function handleClick() {
+        Cookies.remove('username');
+        Cookies.remove('token');
         history.push('/login');
     }
 

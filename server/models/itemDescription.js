@@ -18,10 +18,8 @@ const itemSchema = mongoose.Schema({
         required: true,
     },
     ammount: {
-        type: Number,
-        default: 1,
+        type: String,
     },
-    isPackaged: Boolean,
     tags: [String],
     author: {
         type: String,

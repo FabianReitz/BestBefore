@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Cookies from 'js-cookie';
 import useStyles from './styles';
 import {
     Card,
@@ -21,9 +21,18 @@ import vegetable from '../ItemIcons/vegetable.png';
 import milk from '../ItemIcons/milk.png';
 import softdrink from '../ItemIcons/soft_drink.png';
 import liquor from '../ItemIcons/liquor.png';
+import axios from 'axios';
 
 const Item = ({ item }) => {
     const classes = useStyles();
+
+    const deleteItem = async (itemID) => {
+        await axios.post('http://localhost:5000/api/items/delete', {
+            token: Cookies.get('token'),
+            itemID: itemID,
+        });
+        window.location.reload();
+    };
 
     const imageToCategory = () => {
         switch (item.category) {
@@ -83,7 +92,7 @@ const Item = ({ item }) => {
             <CardActions disableSpacing>
                 <IconButton
                     onClick={() => {
-                        alert('clicked');
+                        deleteItem(item._id);
                     }}
                     aria-label='delete'
                 >

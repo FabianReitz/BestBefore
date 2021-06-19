@@ -51,7 +51,7 @@ const Form = () => {
         },
     ];
 
-    const [category, setCategory] = React.useState('Verpackt');
+    const [category, setCategory] = React.useState('packaged');
 
     const today = new Date();
     const todayPretty = today.toISOString().split('T')[0];
@@ -67,7 +67,6 @@ const Form = () => {
         purchaseDate: todayPretty,
         bestBeforeDate: nextWeekPretty,
         amount: '',
-        isPackaged: false,
         category: '',
         tags: [],
     });
@@ -79,9 +78,14 @@ const Form = () => {
         e.preventDefault();
 
         dispatch(createItem(itemData));
+        setItemData({
+            title: '',
+            manufacturer: '',
+            amount: '',
+            category: '',
+            tags: [],
+        });
     };
-
-    const clear = () => {};
 
     return (
         <Accordion className={classes.paper}>
@@ -147,7 +151,6 @@ const Form = () => {
                     />
                     <TextField
                         name='amount'
-                        type='number'
                         variant='outlined'
                         label='Menge'
                         value={itemData.ammount}
@@ -204,15 +207,6 @@ const Form = () => {
                         type='submit'
                     >
                         HINZUFÜGEN
-                    </Button>
-
-                    <Button
-                        variant='contained'
-                        color='secondary'
-                        size='small'
-                        onClick={clear}
-                    >
-                        CLEAR
                     </Button>
                 </form>
             </AccordionDetails>
