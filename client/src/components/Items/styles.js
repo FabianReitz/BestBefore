@@ -10,14 +10,10 @@ export default makeStyles((theme) => ({
     wrapper: {
         display: 'grid',
         //'grid-template-columns': 'repeat(auto-fill, minmax(200px, 25%))',
-        'grid-template-columns': 'repeat(3, 1fr)',
+        'grid-template-columns': 'repeat(4, 1fr)',
         'grid-auto-rows': 'minmax(100px, auto)',
         'grid-auto-flow': 'row',
         'grid-column-gap': '6px',
         'grid-row-gap': '6px',
-    },
-    grid: {
-        width: '100%',
-        margin: '0px',
     },
 }));

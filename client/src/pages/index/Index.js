@@ -1,9 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-
+import React from 'react';
 import { Container, Grow, Grid, CssBaseline } from '@material-ui/core';
-
-import { getItems } from '../../actions/items';
 import Items from '../../components/Items/Items';
 import Form from '../../components/Form/Form';
 import Appbar from '../../components/Appbar/appbar';
