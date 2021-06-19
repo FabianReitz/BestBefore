@@ -4,7 +4,7 @@ export default makeStyles({
     media: {
         height: 0,
         paddingTop: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: 'rgba(0, 0, 0, 0.15)',
         backgroundBlendMode: 'darken',
     },
     border: {
