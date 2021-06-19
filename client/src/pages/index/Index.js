@@ -18,13 +18,13 @@ const Index = () => {
             <CssBaseline />
             <Appbar></Appbar>
             <Grow in>
-                <Container>
+                <Container className={classes.container}>
                     <br></br>
                     <Grid
                         container
                         justify='space-between'
                         alignItems='stretch'
-                        spacing={1}
+                        spacing={2}
                     >
                         <Grid item xs={12}>
                             <Form />

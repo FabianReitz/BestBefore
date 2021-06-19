@@ -16,4 +16,8 @@ export default makeStyles((theme) => ({
         'grid-column-gap': '6px',
         'grid-row-gap': '6px',
     },
+    grid: {
+        width: '100%',
+        margin: '0px',
+    },
 }));
