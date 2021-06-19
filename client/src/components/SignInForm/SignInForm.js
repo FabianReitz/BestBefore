@@ -67,6 +67,7 @@ const SignInForm = () => {
                     Cookies.set('username', response.data.username);
                     Cookies.set('token', response.data.token);
                     history.push('/');
+                    window.location.reload();
                 }
             })
             .catch(function (error) {
