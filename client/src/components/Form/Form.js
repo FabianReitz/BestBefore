@@ -137,6 +137,12 @@ const Form = () => {
                         InputLabelProps={{
                             shrink: true,
                         }}
+                        onChange={(e) =>
+                            setItemData({
+                                ...itemData,
+                                purchaseDate: e.target.value,
+                            })
+                        }
                     />
                     <TextField
                         variant='outlined'
@@ -148,6 +154,12 @@ const Form = () => {
                         InputLabelProps={{
                             shrink: true,
                         }}
+                        onChange={(e) =>
+                            setItemData({
+                                ...itemData,
+                                bestBeforeDate: e.target.value,
+                            })
+                        }
                     />
                     <TextField
                         name='amount'
