@@ -51,7 +51,7 @@ const Form = () => {
         },
     ];
 
-    const [category, setCategory] = React.useState('packaged');
+    const [category, setCategory] = React.useState();
 
     const today = new Date();
     const todayPretty = today.toISOString().split('T')[0];
