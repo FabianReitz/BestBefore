@@ -78,13 +78,13 @@ const Form = () => {
         e.preventDefault();
 
         dispatch(createItem(itemData));
-        setItemData({
-            title: '',
-            manufacturer: '',
-            amount: '',
-            category: '',
-            tags: [],
-        });
+        // setItemData({
+        //     title: '',
+        //     manufacturer: '',
+        //     amount: '',
+        //     category: '',
+        //     tags: [],
+        // });
     };
 
     return (
